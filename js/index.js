@@ -29,9 +29,10 @@ class Car {
     constructor(x, velocidadx) {
       this.x = x;
       this.velocidadx = velocidadx;
+      this.width = 70;
     }
     print() {
-      ctx.drawImage(imageCar, this.x, 550, 70, 125);
+      ctx.drawImage(imageCar, this.x, 550, this.width, 125);
   
     }
   }
@@ -48,18 +49,14 @@ class Car {
   document.getElementsByTagName("body")[0].addEventListener("keydown", (event) => {
     switch (event.key) {
       case "ArrowLeft":
-        cars.x -= cars.velocidadx;
-        if(cars.x > 0) cars.x = cars.x -10;
+        if (cars.x > 0) cars.x -= cars.velocidadx;
         break;
 
       case "ArrowRight":
-        cars.x += cars.velocidadx;
-        if(cars.x < (canvas.width - canvas-height)) cars.x = cars.x +10;
+        if (cars.x + cars.width < canvas.width) cars.x += cars.velocidadx;
         break;
       default:
-        break;
-    }
-  })
-  
+      }
+    })  
   }
 
